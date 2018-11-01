@@ -4,6 +4,8 @@
 #include "SFML/Graphics.hpp"
 #include "WindowHandler.h"
 
+class Object;
+
 using namespace sf;
 
 class Game
