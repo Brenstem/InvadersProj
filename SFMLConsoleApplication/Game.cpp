@@ -6,12 +6,12 @@ namespace {
 	const Color backgroundColor = Color::Black;
 }
 
-Game::Game():
+Game::Game() :
 	mRenderWindow(videoMode, windowTitle, Style::Titlebar | Style::Close)
 	, mWindowHandler(mRenderWindow, backgroundColor)
 	, mGameOver(false)
+	, mResourceHandler()
 {
-
 }
 
 Game::~Game()
@@ -30,4 +30,9 @@ void Game::run()
 		mWindowHandler.displayWindow();
 	}
 
+}
+
+Texture Game::getTexture(std::string fileName)
+{
+	return mResourceHandler.getTexture(fileName);
 }
