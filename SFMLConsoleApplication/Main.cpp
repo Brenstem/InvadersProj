@@ -1,7 +1,6 @@
-#include "Game.h"
-
+#include "RunTimeGame.h"
 
 int main(){
-	Game game;
+	RunTimeGame game;
 	game.run();
 }

@@ -2,21 +2,24 @@
 #define INCLUDE_GAME_H
 
 #include "SFML/Graphics.hpp"
-#include "WindowHandler.h"
+#include <vector>
+#include <string>
+#include "Object.h"
 
-using namespace sf;
+class Object;
+
+using namespace std;
 
 class Game
 {
 public:
 	Game();
 	~Game();
-	void run();
-
+	virtual void run() = 0;
+	virtual sf::Sprite createSprite(string fileName, sf::Vector2f position) = 0;
+	virtual void draw(sf::Sprite &sprite) = 0;
 private:
-	RenderWindow mRenderWindow;
-	bool mGameOver;
-	WindowHandler mWindowHandler;
+
 };
 
 #endif // !INCLUDE_GAME_H
