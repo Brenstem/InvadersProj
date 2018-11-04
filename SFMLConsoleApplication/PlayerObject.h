@@ -3,27 +3,22 @@
 
 #include "Object.h"
 
-class PlayerObject : public Object
+class Player : public Object
 {
 public:
-	PlayerObject(Game *game);
-	~PlayerObject();
-	virtual sf::Vector2f getPos() override;
-	virtual ObjectType getType() override;
-	virtual ObjectFaction getFaction() override;
-	virtual void update(float deltaTime) override;
-	virtual void collide(Object *objectCollidedWith) override;
-	virtual void draw() override;
+	Player();
+	~Player();
 
 private:
-	sf::Sprite mSprite;
-	float mRadius;
-	float mFireRate;
-	float mVelocity;
 
-	void handleMovement();
-	void handleFiring();
 };
 
+Player::Player()
+{
+}
+
+Player::~Player()
+{
+}
 
 #endif // !INCLUDE_PLAYEROBJECT_H

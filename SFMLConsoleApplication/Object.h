@@ -2,10 +2,9 @@
 #define INCLUDE_OBJECT_H
 
 #include "SFML/Graphics.hpp"
-
 class Game;
 
-enum class ObjectType { PROJECTILE, PlayerObject, EFFECT };
+enum class ObjectType { PROJECTILE, SHIP, EFFECT };
 enum class ObjectFaction { FRIEND, ENEMY, NEUTRAL };
 
 class Object
