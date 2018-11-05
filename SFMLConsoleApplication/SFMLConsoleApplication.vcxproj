@@ -149,10 +149,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BulletObject.cpp" />
+    <ClCompile Include="InvaderObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
+    <ClCompile Include="RandomHandler.cpp" />
     <ClCompile Include="RunTimeGame.cpp" />
     <ClCompile Include="SpriteHandler.cpp" />
     <ClCompile Include="TextureResource.cpp" />
@@ -161,8 +163,10 @@
   <ItemGroup>
     <ClInclude Include="BulletObject.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InvaderObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerObject.h" />
+    <ClInclude Include="RandomHandler.h" />
     <ClInclude Include="RunTimeGame.h" />
     <ClInclude Include="SpriteHandler.h" />
     <ClInclude Include="TextureResource.h" />

@@ -11,7 +11,6 @@ SpriteHandler::~SpriteHandler()
 
 Sprite SpriteHandler::createSprite(std::string fileName, Vector2f position)
 {
-	std::cout << "Created sprite" << std::endl;
 	Sprite sprite(getTexture(fileName));
 
 	float originX = 0.5f * sprite.getLocalBounds().width;

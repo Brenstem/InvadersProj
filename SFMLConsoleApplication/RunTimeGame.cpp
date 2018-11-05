@@ -1,18 +1,22 @@
 #include "RunTimeGame.h"
-#include "BulletObject.h"
 #include <iostream>
 
 namespace {
 	const String windowTitle = "Invaders";
 	const VideoMode videoMode = VideoMode(768, 1024);
 	const Color backgroundColor = Color::Black;
+	const float SPAWN_BASE = 1.0f;
+	const float SPAWN_INCREMENT = 0.98f;
 }
 
 RunTimeGame::RunTimeGame() :
 	mRenderWindow(videoMode, windowTitle, Style::Titlebar | Style::Close)
 	, mWindowHandler(mRenderWindow, backgroundColor)
 	, mSpriteHandler()
+	, mRandomHandler()
 	, mGameOver(false)
+	, mSpawnCounter(0)
+	, mSpawnCountModifier(SPAWN_BASE)
 {
 	mObjects.push_back(new PlayerObject(this));
 }
@@ -31,6 +35,8 @@ void RunTimeGame::run()
 
 		mWindowHandler.handleWindowEvents();
 		mWindowHandler.clearWindow();
+
+		spawnInvaders(deltaTime);
 
 		updateObjects(deltaTime);
 		drawObjects();
@@ -76,6 +82,38 @@ void RunTimeGame::updateObjects(float deltaTime)
 	}
 }
 
+void RunTimeGame::spawnInvader()
+{
+	Vector2f position = Vector2f(mRandomHandler.getRandomNumber(0, mRenderWindow.getSize().x), -10);
+	Vector2f direction = Vector2f(getSpawnDirection(), 1);
+	InvaderObject *invader = new InvaderObject(this, position, direction);
+	mObjects.push_back(invader);
+}
+
+void RunTimeGame::spawnInvaders(float deltaTime)
+{
+	mSpawnCounter += deltaTime;
+	if (mSpawnCounter > mSpawnCountModifier)
+	{
+		spawnInvader();
+		mSpawnCounter = 0;
+	}
+}
+
+float RunTimeGame::getSpawnDirection()
+{
+	bool value = mRandomHandler.getRandomBool();
+
+	if (value)
+	{
+		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+
 void RunTimeGame::draw(sf::Sprite & sprite)
 {
 	mRenderWindow.draw(sprite);
@@ -83,14 +121,12 @@ void RunTimeGame::draw(sf::Sprite & sprite)
 
 bool RunTimeGame::isVisable(Object * object)
 {
-	return false;
+	return true;
 }
 
 void RunTimeGame::add(Object * object)
 {
-	std::cout << "added gameobject" << std::endl;
 	mObjects.push_back(object);
-	std::cout << mObjects.size();
 }
 
 //Getters
@@ -98,7 +134,3 @@ sf::RenderWindow& RunTimeGame::getRenderWindow()
 {
 	return mRenderWindow;
 }
-
-
-
-
