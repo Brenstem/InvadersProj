@@ -24,7 +24,6 @@ PlayerObject::~PlayerObject()
 {
 }
 
-
 void PlayerObject::update(float deltaTime)
 {
 	updatePosition(deltaTime);
@@ -40,17 +39,22 @@ void PlayerObject::draw()
 //Collision
 void PlayerObject::collide(Object * objectCollidedWith)
 {
+	if (objectCollidedWith->getFaction() == ObjectFaction::ENEMY)
+	{
+		isDead = true;
+		mGame->killGame();
+	}
 }
 
 //Getters
-EntityFaction PlayerObject::getFaction()
+ObjectFaction PlayerObject::getFaction()
 {
-	return EntityFaction::FRIEND;
+	return ObjectFaction::FRIEND;
 }
 
-EntityType PlayerObject::getType()
+ObjectType PlayerObject::getType()
 {
-	return EntityType::SHIP;
+	return ObjectType::SHIP;
 }
 
 sf::Vector2f PlayerObject::getPosition()
@@ -120,7 +124,7 @@ void PlayerObject::handleFiring(float deltaTime)
 	{
 		std::cout << "firekey pressed" << std::endl;
 
-		EntityFaction category = EntityFaction::FRIEND;
+		ObjectFaction category = ObjectFaction::FRIEND;
 		Vector2f position = getPosition();
 		Vector2f direction = Vector2f(0, -1);
 		mGame->add(new BulletObject(mGame, category, position, direction));

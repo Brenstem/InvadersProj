@@ -3,6 +3,7 @@
 #include "Object.h"
 #include "Game.h"
 #include "BulletObject.h"
+#include "ExplosionObject.h"
 
 using namespace sf;
 
@@ -16,8 +17,8 @@ public:
 	virtual void update(float deltaTime) override;
 	virtual void collide(Object *objectCollidedWith) override;
 
-	virtual EntityFaction getFaction() override;
-	virtual EntityType getType() override;
+	virtual ObjectFaction getFaction() override;
+	virtual ObjectType getType() override;
 	virtual sf::Vector2f getPosition() override;
 	virtual float getRadius() override;
 

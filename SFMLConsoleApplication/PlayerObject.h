@@ -17,8 +17,8 @@ public:
 	virtual void update(float deltaTime) override;
 	virtual void draw() override;
 
-	virtual EntityFaction getFaction() override;
-	virtual EntityType getType() override;
+	virtual ObjectFaction getFaction() override;
+	virtual ObjectType getType() override;
 	virtual Vector2f getPosition() override;
 	virtual float getRadius() override;
 

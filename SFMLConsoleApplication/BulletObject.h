@@ -8,20 +8,20 @@ using namespace sf;
 class BulletObject : public Object
 {
 public:
-	BulletObject(Game *game, EntityFaction category, Vector2f position, Vector2f direction);
+	BulletObject(Game *game, ObjectFaction category, Vector2f position, Vector2f direction);
 	~BulletObject();
 
 	virtual void collide(Object *objectCollidedWith) override;
 	virtual void update(float deltaTime) override;
 	virtual void draw() override;
 
-	virtual EntityFaction getFaction() override;
-	virtual EntityType getType() override;
+	virtual ObjectFaction getFaction() override;
+	virtual ObjectType getType() override;
 	virtual Vector2f getPosition() override;
 	virtual float getRadius() override;
 
 private:
-	EntityFaction mCategory;
+	ObjectFaction mCategory;
 	Vector2f mPosition;
 	Vector2f mDirection;
 	Sprite mSprite;

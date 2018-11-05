@@ -17,7 +17,13 @@ public:
 	~Game();
 	virtual void run() = 0;
 	virtual sf::Sprite createSprite(string fileName, sf::Vector2f position) = 0;
-	virtual void draw(sf::Sprite &sprite) = 0;	virtual sf::RenderWindow& getRenderWindow() = 0;	virtual bool isVisable(Object *object) = 0;	virtual void add(Object *object) = 0;
+	virtual void draw(sf::Sprite &sprite) = 0;
+	virtual sf::RenderWindow& getRenderWindow() = 0;
+	virtual bool isVisable(Object *object) = 0;
+	virtual void add(Object *object) = 0;
+	virtual void remove(Object *object) = 0;
+	virtual void killGame() = 0;
+
 private:
 
 };

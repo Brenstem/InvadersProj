@@ -4,7 +4,7 @@ namespace {
 	const std::string textureFilename = "Invader.psd";
 	const float RADIUS = 32.0f;
 	const float FIRE_RATE = 1.0f;
-	const float VELOCITY = 200.0f;
+	const float VELOCITY = 100.0f;
 	const Vector2f STARTPOSITION = Vector2f(350, 850);
 }
 
@@ -40,17 +40,22 @@ void InvaderObject::update(float deltaTime)
 
 void InvaderObject::collide(Object * objectCollidedWith)
 {
+	if (objectCollidedWith->getFaction() == ObjectFaction::FRIEND)
+	{
+		mGame->add(new ExplosionObject(mGame, getPosition()));
+		isDead = true;
+	}
 }
 
 
-EntityFaction InvaderObject::getFaction()
+ObjectFaction InvaderObject::getFaction()
 {
-	return EntityFaction::ENEMY;
+	return ObjectFaction::ENEMY;
 }
 
-EntityType InvaderObject::getType()
+ObjectType InvaderObject::getType()
 {
-	return EntityType::SHIP;
+	return ObjectType::SHIP;
 }
 
 sf::Vector2f InvaderObject::getPosition()
@@ -86,7 +91,7 @@ void InvaderObject::handleFiring(float deltaTime)
 	mFireTimer += deltaTime;
 	if (mFireRate < mFireTimer && mGame->isVisable(this))
 	{
-		EntityFaction category = EntityFaction::ENEMY;
+		ObjectFaction category = ObjectFaction::ENEMY;
 		Vector2f position = mSprite.getPosition();
 		Vector2f direction = Vector2f(0, 1);
 		mGame->add(new BulletObject(mGame, category, position, direction));

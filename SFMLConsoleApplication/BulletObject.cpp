@@ -5,10 +5,10 @@ using namespace sf;
 namespace {
 	const std::string textureFilename = "Bullet.psd";
 	const float RADIUS = 32.0f;
-	const float VELOCITY = 800.0f;
+	const float VELOCITY = 600.0f;
 }
 
-BulletObject::BulletObject(Game *game, EntityFaction category, Vector2f position, Vector2f direction) :
+BulletObject::BulletObject(Game *game, ObjectFaction category, Vector2f position, Vector2f direction) :
 	Object(game)
 	, mSprite(mGame->createSprite(textureFilename, position))
 	, mRadius(RADIUS)
@@ -24,6 +24,10 @@ BulletObject::~BulletObject()
 
 void BulletObject::collide(Object * objectCollidedWith)
 {
+	if (objectCollidedWith->getType() != ObjectType::PROJECTILE && objectCollidedWith->getFaction() != getFaction())
+	{
+		isDead = true;
+	}
 }
 
 void BulletObject::update(float deltaTime)
@@ -36,19 +40,19 @@ void BulletObject::draw()
 	mGame->draw(mSprite);
 }
 
-EntityFaction BulletObject::getFaction()
+ObjectFaction BulletObject::getFaction()
 {
 	return mCategory;
 }
 
-EntityType BulletObject::getType()
+ObjectType BulletObject::getType()
 {
-	return EntityType::PROJECTILE;
+	return ObjectType::PROJECTILE;
 }
 
 Vector2f BulletObject::getPosition()
 {
-	return mPosition;
+	return mSprite.getPosition();
 }
 
 float BulletObject::getRadius()
