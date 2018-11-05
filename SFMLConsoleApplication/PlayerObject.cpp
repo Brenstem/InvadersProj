@@ -12,7 +12,7 @@ namespace {
 
 PlayerObject::PlayerObject(Game *game) :
 	Object(game)
-	, mSprite(game->createSprite(textureFilename, Vector2f(0,0)))
+	, mSprite(game->createSprite(textureFilename, Vector2f(354, 850)))
 {
 }
 
