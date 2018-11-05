@@ -148,19 +148,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BulletObject.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="RunTimeGame.cpp" />
+    <ClCompile Include="SpriteHandler.cpp" />
     <ClCompile Include="TextureResource.cpp" />
     <ClCompile Include="WindowHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BulletObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="RunTimeGame.h" />
+    <ClInclude Include="SpriteHandler.h" />
     <ClInclude Include="TextureResource.h" />
     <ClInclude Include="WindowHandler.h" />
   </ItemGroup>

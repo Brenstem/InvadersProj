@@ -1,16 +1,16 @@
 #include "TextureResource.h"
 
-TextureResource::TextureResource(std::string fileName) : 
+TextureResource::TextureResource(std::string fileName, Texture texture) : 
 	mName(fileName)
+	, mTexture(texture)
 {
-	mTexture.loadFromFile(fileName);
 }
 
 TextureResource::~TextureResource()
 {
 }
 
-Texture TextureResource::getTexture()
+Texture& TextureResource::getTexture()
 {
 	return mTexture;
 }

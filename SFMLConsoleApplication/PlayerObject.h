@@ -1,6 +1,9 @@
 #ifndef INCLUDED_PLAYEROBJECT_H
 #define INCLUDED_PLAYEROBJECT_H
 #include "Object.h"
+#include "Game.h"
+#include "BulletObject.h"
+
 
 using namespace sf;
 
@@ -11,7 +14,7 @@ public:
 	~PlayerObject();
 
 	virtual void collide(Object *objectCollidedWith) override;
-	virtual void update() override;
+	virtual void update(float deltaTime) override;
 	virtual void draw() override;
 
 	virtual EntityFaction getFaction() override;
@@ -24,6 +27,14 @@ private:
 	float mRadius;
 	Vector2f mPosition;
 	float mVelocity;
+
+	float mFireTimer;
+	float mFireRate;
+
+	void updatePosition(float deltaTime);
+	void constrainPosition();
+
+	void handleFiring(float deltaTime);
 };
 
 #endif // !INCLUDED_PLAYEROBJECT_H

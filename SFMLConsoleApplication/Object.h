@@ -15,7 +15,7 @@ public:
 	~Object();
 
 	virtual void collide(Object *objectCollidedWith) = 0;
-	virtual void update() = 0;
+	virtual void update(float deltaTime) = 0;
 	virtual void draw() = 0;
 
 	virtual EntityFaction getFaction() = 0;

@@ -1,4 +1,5 @@
 #include "RunTimeGame.h"
+#include "BulletObject.h"
 #include <iostream>
 
 namespace {
@@ -10,11 +11,10 @@ namespace {
 RunTimeGame::RunTimeGame() :
 	mRenderWindow(videoMode, windowTitle, Style::Titlebar | Style::Close)
 	, mWindowHandler(mRenderWindow, backgroundColor)
+	, mSpriteHandler()
 	, mGameOver(false)
 {
-	objectVector.push_back(new PlayerObject(this));
-	
-
+	mObjects.push_back(new PlayerObject(this));
 }
 
 RunTimeGame::~RunTimeGame()
@@ -32,49 +32,48 @@ void RunTimeGame::run()
 		mWindowHandler.handleWindowEvents();
 		mWindowHandler.clearWindow();
 
-		drawEntities();
+		updateObjects(deltaTime);
+		drawObjects();
 
 		mWindowHandler.displayWindow();
 	}
-
 }
 
+//Sprite Creation
 Sprite RunTimeGame::createSprite(string fileName, Vector2f position)
 {
-	Sprite sprite;
-	Texture spriteTexture;
+	return mSpriteHandler.createSprite(fileName, position);
+}
 
-	for (size_t i = 0; i < textureVector.size(); i++)
+
+//Object handling
+void RunTimeGame::drawObjects(EntityType type)
+{
+	for (size_t i = 0; i < mObjects.size(); i++)
 	{
-		std::cout << i;
-		if (fileName == textureVector[i]->getName())
+		Object *object = mObjects[i];
+		if (object->getType() == type)
 		{
-			sprite.setTexture(textureVector[i]->getTexture());
-
-			float originX = 0.5f * sprite.getLocalBounds().width;
-			float originY = 0.5f * sprite.getLocalBounds().height;
-			Vector2f origin(originX, originY);
-			sprite.setOrigin(origin);
-			sprite.setPosition(position); 
-
-			return sprite;
-			std::cout << "got texture from list";
+			object->draw();
 		}
 	}
+}
 
-	mTexturePointer = new TextureResource(fileName);
-	textureVector.push_back(mTexturePointer);
-	spriteTexture = mTexturePointer->getTexture();
-	sprite.setTexture(spriteTexture);
-	std::cout << "created new texture";
+void RunTimeGame::drawObjects()
+{
+	drawObjects(EntityType::PROJECTILE);
+	drawObjects(EntityType::SHIP);
+	drawObjects(EntityType::EFFECT);
+}
 
-	float originX = 0.5f * sprite.getLocalBounds().width;
-	float originY = 0.5f * sprite.getLocalBounds().height;
-	Vector2f origin(originX, originY);
-	sprite.setOrigin(origin);
-	sprite.setPosition(position);
+void RunTimeGame::updateObjects(float deltaTime)
+{
+	for (size_t i = 0; i < mObjects.size(); i++)
+	{
+		Object *object = mObjects[i];
 
-	return sprite;
+		object->update(deltaTime);
+	}
 }
 
 void RunTimeGame::draw(sf::Sprite & sprite)
@@ -82,22 +81,24 @@ void RunTimeGame::draw(sf::Sprite & sprite)
 	mRenderWindow.draw(sprite);
 }
 
-void RunTimeGame::drawEntities(EntityType type)
+bool RunTimeGame::isVisable(Object * object)
 {
-	for (size_t i = 0; i < objectVector.size(); i++)
-	{
-		Object *object = objectVector[i];
-		if (object->getType() == type)
-		{
-			object->draw();
-		}
-	}
-
+	return false;
 }
 
-void RunTimeGame::drawEntities()
+void RunTimeGame::add(Object * object)
 {
-	drawEntities(EntityType::PROJECTILE);
-	drawEntities(EntityType::SHIP);
-	drawEntities(EntityType::EFFECT);
+	std::cout << "added gameobject" << std::endl;
+	mObjects.push_back(object);
+	std::cout << mObjects.size();
 }
+
+//Getters
+sf::RenderWindow& RunTimeGame::getRenderWindow()
+{
+	return mRenderWindow;
+}
+
+
+
+

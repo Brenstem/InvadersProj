@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "WindowHandler.h"
+#include "SpriteHandler.h"
 #include "TextureResource.h"
 #include "PlayerObject.h"
 
@@ -14,29 +15,35 @@ public:
 	RunTimeGame();
 	~RunTimeGame();
 	virtual void run() override;
+
 	virtual Sprite createSprite(string fileName, Vector2f position) override;
+
 	virtual void draw(sf::Sprite &sprite) override;
 
+	virtual bool isVisable(Object *object) override;
+	virtual void add(Object *object) override;
+	
+	//Getters
+	virtual sf::RenderWindow& getRenderWindow() override;	
+
 private:
+	//Member variables
 	RenderWindow mRenderWindow;
 	bool mGameOver;
 
+	//Game Handlers
 	WindowHandler mWindowHandler;
+	SpriteHandler mSpriteHandler;
 
-	typedef vector<TextureResource*> TextureResourceVector;
+	//ObjectHandling
 	typedef vector<Object*> ObjectVector;
+	ObjectVector mObjects;
+	void drawObjects(EntityType type);
+	void drawObjects();
+	void updateObjects(float deltaTime);
 
-	TextureResourceVector textureVector;
-	ObjectVector objectVector;
-
-	TextureResource *mTexturePointer;
 	PlayerObject *mPlayer;
 	Game *mGame;
-	ResourceHandler *mResourceHandler;
-
-	void drawEntities(EntityType type);
-	void drawEntities();
-	sf::Texture getTexture(string fileName);
 };
 
 #endif // !INCLUDE_RUNTIMEGAME_H

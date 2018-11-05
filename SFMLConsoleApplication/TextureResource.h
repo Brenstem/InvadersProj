@@ -9,10 +9,10 @@ using namespace sf;
 class TextureResource
 {
 public:
-	TextureResource(std::string fileName);
+	TextureResource(std::string fileName, Texture texture);
 	~TextureResource();
 
-	Texture getTexture();
+	Texture& getTexture();
 	std::string getName();
 
 private:

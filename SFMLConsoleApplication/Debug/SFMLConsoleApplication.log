@@ -1,4 +1,2 @@
-﻿  RunTimeGame.cpp
-c:\users\brenstem\documents\invadersproj\invadersproj\sfmlconsoleapplication\runtimegame.cpp(67): error C2664: 'void sf::Sprite::setTexture(const sf::Texture &,bool)': cannot convert argument 1 from 'TextureResource *' to 'const sf::Texture &'
-  c:\users\brenstem\documents\invadersproj\invadersproj\sfmlconsoleapplication\runtimegame.cpp(67): note: Reason: cannot convert from 'TextureResource *' to 'const sf::Texture'
-  c:\users\brenstem\documents\invadersproj\invadersproj\sfmlconsoleapplication\runtimegame.cpp(67): note: No constructor could take the source type, or constructor overload resolution was ambiguous
+﻿  BulletObject.cpp
+  SFMLConsoleApplication.vcxproj -> C:\Users\Brenstem\Documents\GitHub\InvadersProj\Debug\SFMLConsoleApplication.exe
