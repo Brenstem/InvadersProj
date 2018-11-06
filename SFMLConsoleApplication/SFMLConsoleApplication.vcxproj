@@ -149,11 +149,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BulletObject.cpp" />
+    <ClCompile Include="CollisionHandler.cpp" />
     <ClCompile Include="ExplosionObject.cpp" />
     <ClCompile Include="InvaderObject.cpp" />
+    <ClCompile Include="InvadersHandler.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ObjectHandler.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="RandomHandler.cpp" />
     <ClCompile Include="RunTimeGame.cpp" />
@@ -163,10 +166,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BulletObject.h" />
+    <ClInclude Include="CollisionHandler.h" />
     <ClInclude Include="ExplosionObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InvaderObject.h" />
+    <ClInclude Include="InvadersHandler.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectHandler.h" />
     <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="RandomHandler.h" />
     <ClInclude Include="RunTimeGame.h" />

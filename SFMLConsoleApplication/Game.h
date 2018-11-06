@@ -1,31 +1,31 @@
 #ifndef INCLUDE_GAME_H
 #define INCLUDE_GAME_H
-
 #include "SFML/Graphics.hpp"
 #include <vector>
 #include <string>
-#include "Object.h"
-
 class Object;
 
 using namespace std;
+using namespace sf;
+
+typedef vector<Object*> ObjectVector;
 
 class Game
 {
 public:
+	// Constructor/Destructor
 	Game();
 	~Game();
+	// Public functions
 	virtual void run() = 0;
-	virtual sf::Sprite createSprite(string fileName, sf::Vector2f position) = 0;
-	virtual void draw(sf::Sprite &sprite) = 0;
-	virtual sf::RenderWindow& getRenderWindow() = 0;
-	virtual bool isVisable(Object *object) = 0;
+	virtual Sprite createSprite(string fileName, Vector2f position) = 0;
+	virtual void draw(Sprite &sprite) = 0;
 	virtual void add(Object *object) = 0;
-	virtual void remove(Object *object) = 0;
 	virtual void killGame() = 0;
 
-private:
-
+	// Getters/Setters
+	virtual RenderWindow &getRenderWindow() = 0;
+	virtual ObjectVector &getObjectVector() = 0;
 };
 
 #endif // !INCLUDE_GAME_H

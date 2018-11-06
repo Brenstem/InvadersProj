@@ -1,2 +1,7 @@
-﻿  PlayerObject.cpp
-  SFMLConsoleApplication.vcxproj -> C:\Users\Brenstem\Documents\InvadersProj\InvadersProj\Debug\SFMLConsoleApplication.exe
+﻿  InvadersHandler.cpp
+c:\users\brenstem\documents\github\invadersproj\sfmlconsoleapplication\invadershandler.cpp(44): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  SFMLConsoleApplication.vcxproj -> C:\Users\Brenstem\Documents\GitHub\InvadersProj\Debug\SFMLConsoleApplication.exe

@@ -1,6 +1,7 @@
 #include "SpriteHandler.h"
 #include <iostream>
 
+// Constructor/Destructor
 SpriteHandler::SpriteHandler()
 {
 }
@@ -9,6 +10,7 @@ SpriteHandler::~SpriteHandler()
 {
 }
 
+// Public functions
 Sprite SpriteHandler::createSprite(std::string fileName, Vector2f position)
 {
 	Sprite sprite(getTexture(fileName));
@@ -22,8 +24,9 @@ Sprite SpriteHandler::createSprite(std::string fileName, Vector2f position)
 	return sprite;
 }
 
+// Private functions
 Texture & SpriteHandler::getTexture(std::string fileName)
-{
+{ 
 	for (TextureResourceVector::size_type i = 0; i < mTextureResources.size(); i++)
 	{
 		if (fileName == mTextureResources[i]->getName())

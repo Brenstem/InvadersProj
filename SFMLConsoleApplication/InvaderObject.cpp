@@ -1,13 +1,18 @@
 #include "InvaderObject.h"
+#include <iostream>
+#include <cmath>
 
+// Settings namespace
 namespace {
 	const std::string textureFilename = "Invader.psd";
 	const float RADIUS = 32.0f;
 	const float FIRE_RATE = 1.0f;
-	const float VELOCITY = 100.0f;
-	const Vector2f STARTPOSITION = Vector2f(350, 850);
+	const float FIRERATE_MODIFIER = 0.9f;
+	const float VELOCITY = 200.0f;
+	const Vector2f STARTPOSITION = Vector2f(0, 0);
 }
 
+// Constructor/Destructor
 InvaderObject::InvaderObject(Game * game, Vector2f position, Vector2f direction) :
 	Object(game)
 	, mSprite(mGame->createSprite(textureFilename, STARTPOSITION))
@@ -26,7 +31,7 @@ InvaderObject::~InvaderObject()
 {
 }
 
-
+// Public functions
 void InvaderObject::draw()
 {
 	mGame->draw(mSprite);
@@ -47,7 +52,7 @@ void InvaderObject::collide(Object * objectCollidedWith)
 	}
 }
 
-
+// Getters/Setters
 ObjectFaction InvaderObject::getFaction()
 {
 	return ObjectFaction::ENEMY;
@@ -68,6 +73,13 @@ float InvaderObject::getRadius()
 	return mRadius;
 }
 
+void InvaderObject::setFireRate(int modifier)
+{
+	mFireRate *= pow(FIRERATE_MODIFIER, modifier);
+	std::cout << mFireRate << std::endl;
+}
+
+// Private functions
 void InvaderObject::handleMovement(float deltaTime)
 {
 	float minX = mRadius;
@@ -89,12 +101,9 @@ void InvaderObject::handleMovement(float deltaTime)
 void InvaderObject::handleFiring(float deltaTime)
 {
 	mFireTimer += deltaTime;
-	if (mFireRate < mFireTimer && mGame->isVisable(this))
+	if (mFireRate < mFireTimer)
 	{
-		ObjectFaction category = ObjectFaction::ENEMY;
-		Vector2f position = mSprite.getPosition();
-		Vector2f direction = Vector2f(0, 1);
-		mGame->add(new BulletObject(mGame, category, position, direction));
+		mGame->add(new BulletObject(mGame, getFaction(), getPosition(), Vector2f(0, 1)));
 		mFireTimer = 0;
 	}
 }

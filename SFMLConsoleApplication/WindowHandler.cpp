@@ -1,17 +1,21 @@
 #include "WindowHandler.h"
 
-WindowHandler::WindowHandler(RenderWindow &renderWindow, Color backgroundColor) : 
+namespace {
+	const Color backgroundColor = Color::Black;
+}
+
+// Constructor/Destructor
+WindowHandler::WindowHandler(RenderWindow &renderWindow) : 
 	mRenderWindow(renderWindow)
 	, mBackgroundColor(backgroundColor)
 {
-
 }
 
 WindowHandler::~WindowHandler()
 {
 }
 
-
+// Public functions
 void WindowHandler::handleWindowEvents()
 {
 	Event event;
@@ -22,14 +26,17 @@ void WindowHandler::handleWindowEvents()
 			mRenderWindow.close();
 		}
 	}
-}
-
-void WindowHandler::clearWindow()
-{
-	mRenderWindow.clear(mBackgroundColor);
+	clearWindow();
 }
 
 void WindowHandler::displayWindow()
 {
 	mRenderWindow.display();
 }
+
+// Private function
+void WindowHandler::clearWindow()
+{
+	mRenderWindow.clear(mBackgroundColor);
+}
+

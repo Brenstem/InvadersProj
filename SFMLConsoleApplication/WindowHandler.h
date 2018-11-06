@@ -1,6 +1,5 @@
 #ifndef INCLUDE_WINDOWHANDLE_H
 #define INCLUDE_WINDOWHANDLE_H
-
 #include "SFML/Graphics.hpp"
 
 using namespace sf;
@@ -8,16 +7,21 @@ using namespace sf;
 class WindowHandler
 {
 public:
-	WindowHandler(RenderWindow &renderWindow, Color backgroundColor);
+	// Constructor/Destructor
+	WindowHandler(RenderWindow &renderWindow);
 	~WindowHandler();
 
+	// Public functions
 	void handleWindowEvents();
-	void clearWindow();
 	void displayWindow();
 
 private:
+	// Member variables
 	RenderWindow &mRenderWindow;
 	Color mBackgroundColor;
+
+	// Private function
+	void clearWindow();
 };
 
 #endif // !INCLUDE_WINDOWHANDLE_H

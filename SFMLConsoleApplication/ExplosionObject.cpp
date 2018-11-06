@@ -1,11 +1,13 @@
 #include "ExplosionObject.h"
 
+// Settings namespace
 namespace {
 	const std::string textureFilename = "Explosion.psd";
 	const float RADIUS = 32.0f;
 	const float LIFETIMER = 0.1f;
 }
 
+// Constructor/Destructor
 ExplosionObject::ExplosionObject(Game * game, Vector2f position) : 
 	Object(game)
 	, mSprite(mGame->createSprite(textureFilename, position))
@@ -19,6 +21,7 @@ ExplosionObject::~ExplosionObject()
 {
 }
 
+// Public functions
 void ExplosionObject::collide(Object * objectCollidedWith)
 {
 	isDead = false;
@@ -39,6 +42,7 @@ void ExplosionObject::draw()
 	mGame->draw(mSprite);
 }
 
+// Getters/Setters
 ObjectFaction ExplosionObject::getFaction()
 {
 	return ObjectFaction::NEUTRAL;

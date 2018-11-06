@@ -10,14 +10,19 @@ using namespace sf;
 class SpriteHandler
 {
 public:
+	// Constructor/Destructor
 	SpriteHandler();
 	~SpriteHandler();
+
+	// Public functions
 	Sprite createSprite(std::string fileName, Vector2f position);
 
 private:
+	// Member variables
 	typedef std::vector<TextureResource*> TextureResourceVector;
 	TextureResourceVector mTextureResources;
 
+	// Private functions
 	Texture& getTexture(std::string fileName);
 };
 

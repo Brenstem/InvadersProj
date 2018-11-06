@@ -1,6 +1,7 @@
 #include "PlayerObject.h"
 #include <iostream>
 
+// Settings namespace
 namespace {
 	const std::string textureFilename = "Ship.psd";
 	const float RADIUS = 32.0f;
@@ -9,7 +10,7 @@ namespace {
 	const Vector2f STARTPOSITION = Vector2f(350, 850);
 }
 
-//Constructors/Destructors
+// Constructor/Destructor
 PlayerObject::PlayerObject(Game *game) :
 	Object(game)
 	, mSprite(mGame->createSprite(textureFilename, STARTPOSITION))
@@ -24,6 +25,7 @@ PlayerObject::~PlayerObject()
 {
 }
 
+// Public functions
 void PlayerObject::update(float deltaTime)
 {
 	updatePosition(deltaTime);
@@ -36,7 +38,6 @@ void PlayerObject::draw()
 	mGame->draw(mSprite);
 }
 
-//Collision
 void PlayerObject::collide(Object * objectCollidedWith)
 {
 	if (objectCollidedWith->getFaction() == ObjectFaction::ENEMY)
@@ -46,7 +47,7 @@ void PlayerObject::collide(Object * objectCollidedWith)
 	}
 }
 
-//Getters
+// Getters/Setters
 ObjectFaction PlayerObject::getFaction()
 {
 	return ObjectFaction::FRIEND;
@@ -67,7 +68,7 @@ float PlayerObject::getRadius()
 	return mRadius;
 }
 
-//Handlers
+// Private functions
 void PlayerObject::updatePosition(float deltaTime)
 {
 	float directionX = 0.0f;
@@ -122,12 +123,10 @@ void PlayerObject::handleFiring(float deltaTime)
 	mFireTimer += deltaTime;
 	if (mFireRate < mFireTimer && Keyboard::isKeyPressed(Keyboard::Space))
 	{
-		std::cout << "firekey pressed" << std::endl;
+		mGame->add(new BulletObject(mGame, getFaction(), getPosition(), Vector2f(0.25f, -1)));
+		mGame->add(new BulletObject(mGame, getFaction(), getPosition(), Vector2f(0, -1)));
+		mGame->add(new BulletObject(mGame, getFaction(), getPosition(), Vector2f(-0.25f, -1)));
 
-		ObjectFaction category = ObjectFaction::FRIEND;
-		Vector2f position = getPosition();
-		Vector2f direction = Vector2f(0, -1);
-		mGame->add(new BulletObject(mGame, category, position, direction));
 		mFireTimer = 0;
 	}
 }
