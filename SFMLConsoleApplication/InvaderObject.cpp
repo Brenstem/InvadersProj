@@ -1,5 +1,4 @@
 #include "InvaderObject.h"
-#include <iostream>
 #include <cmath>
 
 // Settings namespace
@@ -76,7 +75,6 @@ float InvaderObject::getRadius()
 void InvaderObject::setFireRate(int modifier)
 {
 	mFireRate *= pow(FIRERATE_MODIFIER, modifier);
-	std::cout << mFireRate << std::endl;
 }
 
 // Private functions

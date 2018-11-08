@@ -24,7 +24,6 @@ ExplosionObject::~ExplosionObject()
 // Public functions
 void ExplosionObject::collide(Object * objectCollidedWith)
 {
-	isDead = false;
 }
 
 void ExplosionObject::update(float deltaTime)
@@ -33,7 +32,6 @@ void ExplosionObject::update(float deltaTime)
 	if (mLifeTimer > mLifeLength)
 	{
 		isDead = true;
-		mLifeTimer = 0;
 	}
 }
 

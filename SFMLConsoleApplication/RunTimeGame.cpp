@@ -38,7 +38,6 @@ void RunTimeGame::run()
 
 		mObjectHandler.updateObjects(deltaTime);
 
-
 		mCollisionHandler.collideEntities();
 
 		mObjectHandler.pruneObjects();

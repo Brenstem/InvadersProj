@@ -16,6 +16,7 @@ public:
 	// Constructor/Destructor
 	Game();
 	~Game();
+
 	// Public functions
 	virtual void run() = 0;
 	virtual Sprite createSprite(string fileName, Vector2f position) = 0;

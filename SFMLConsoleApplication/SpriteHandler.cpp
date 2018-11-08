@@ -1,5 +1,4 @@
 #include "SpriteHandler.h"
-#include <iostream>
 
 // Constructor/Destructor
 SpriteHandler::SpriteHandler()

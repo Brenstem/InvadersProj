@@ -1,5 +1,4 @@
 #include "InvadersHandler.h"
-#include <iostream>
 
 // Settings namespace
 namespace {
@@ -31,8 +30,7 @@ void InvadersHandler::spawnInvaders(float deltaTime)
 		spawnInvader();
 
 		mSpawnCountModifier *= SPAWN_INCREMENT;
-		std::cout << mSpawnCountModifier << std::endl;
-		std::cout << mDifficulty << std::endl;
+
 
 		mSpawnCounter = 0;
 	}
@@ -41,7 +39,7 @@ void InvadersHandler::spawnInvaders(float deltaTime)
 // Private functions
 void InvadersHandler::spawnInvader()
 {
-	Vector2f position = Vector2f(float(mRandomHandler.getRandomNumber(50, mGame->getRenderWindow().getSize().x)), -50);
+	Vector2f position = Vector2f(mRandomHandler.getRandomNumber(50, mGame->getRenderWindow().getSize().x), -50);
 	Vector2f direction = Vector2f(getSpawnDirection(), 1);
 	InvaderObject *invader = new InvaderObject(mGame, position, direction);
 	invader->setFireRate(mDifficulty);

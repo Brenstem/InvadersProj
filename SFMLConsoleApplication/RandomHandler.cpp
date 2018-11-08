@@ -16,7 +16,7 @@ RandomHandler::~RandomHandler()
 float RandomHandler::getRandomNumber(float min, float max)
 {
 	uniform_int_distribution<uint32_t> randomRange(min, max);
-	return randomRange(mGenerator);
+	return float(randomRange(mGenerator));
 }
 
 bool RandomHandler::getRandomBool()

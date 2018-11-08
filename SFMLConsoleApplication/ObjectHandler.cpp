@@ -27,7 +27,7 @@ void ObjectHandler::pruneObjects()
 {
 	handleOutOfBounds();
 	ObjectVector remainingObjects;
-	for (int i = 0; i < mObjects.size(); i++)
+	for (ObjectVector::size_type i = 0; i < mObjects.size(); i++)
 	{
 		if (mObjects[i]->checkDeath() == false)
 		{
@@ -78,7 +78,7 @@ void ObjectHandler::handleOutOfBounds()
 	float minY = -100;
 	float maxY = mGame->getRenderWindow().getSize().y + 100;
 	ObjectVector remainingObjects;
-	for (int i = 0; i < mObjects.size(); i++)
+	for (ObjectVector::size_type i = 0; i < mObjects.size(); i++)
 	{
 		if (mObjects[i]->getPosition().y < maxY && mObjects[i]->getPosition().y > minY)
 		{

@@ -1,7 +1,22 @@
-﻿  InvadersHandler.cpp
-c:\users\brenstem\documents\github\invadersproj\sfmlconsoleapplication\invadershandler.cpp(44): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+﻿  BulletObject.cpp
+  CollisionHandler.cpp
+  ExplosionObject.cpp
+  Game.cpp
+  InvaderObject.cpp
+  InvadersHandler.cpp
+c:\users\brenstem\documents\invadersproj\invadersproj\sfmlconsoleapplication\invadershandler.cpp(42): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=unsigned int
           ]
-  SFMLConsoleApplication.vcxproj -> C:\Users\Brenstem\Documents\GitHub\InvadersProj\Debug\SFMLConsoleApplication.exe
+  Main.cpp
+  ObjectHandler.cpp
+c:\users\brenstem\documents\invadersproj\invadersproj\sfmlconsoleapplication\objecthandler.cpp(79): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+  PlayerObject.cpp
+  RunTimeGame.cpp
+  Generating Code...
+  SFMLConsoleApplication.vcxproj -> C:\Users\Brenstem\Documents\InvadersProj\InvadersProj\Debug\SFMLConsoleApplication.exe

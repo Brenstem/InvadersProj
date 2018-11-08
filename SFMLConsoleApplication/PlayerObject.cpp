@@ -1,5 +1,4 @@
 #include "PlayerObject.h"
-#include <iostream>
 
 // Settings namespace
 namespace {

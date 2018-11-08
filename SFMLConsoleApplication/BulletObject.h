@@ -33,6 +33,7 @@ private:
 
 	// Private functions
 	void handleMovement(float deltaTime);
+
 };
 
 #endif // !INCLUDE_BULLETOBJECT_H

@@ -15,10 +15,10 @@ CollisionHandler::~CollisionHandler()
 // Public functions
 void CollisionHandler::collideEntities()
 {
-	for (int i = 0; i < mObjects.size(); i++)
+	for (ObjectVector::size_type i = 0; i < mObjects.size(); i++)
 	{
 		Object *object0 = mObjects[i];
-		for (int j = i + 1; j < mObjects.size(); j++)
+		for (ObjectVector::size_type j = i + 1; j < mObjects.size(); j++)
 		{
 			Object *object1 = mObjects[j];
 			if (overlap(object0, object1))
